@@ -1,6 +1,8 @@
 
 import './App.css'
-import Input from './components/Input'
+import Dashboard from './pages/Dashboard'
+
+
 
 
 function App() {
@@ -8,7 +10,7 @@ function App() {
 
   return (
     <>
-    
+    <Dashboard/>
     </>
   )
 }
