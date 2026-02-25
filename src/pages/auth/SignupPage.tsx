@@ -1,4 +1,4 @@
-import { useState } from "react";
+ import { useState } from "react";
 import AuthCard from "../../components/AuthCard";
 
 function SignupPage() {
