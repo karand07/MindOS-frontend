@@ -1,26 +1,41 @@
 import type { ReactElement } from "react";
 
-interface Button{
-    variant:"primary"|"secondary";
-    text:string;
-    startIcon: ReactElement,
-    onClick:()=>void;
+interface ButtonProps {
+  variant: "primary" | "secondary";
+  text: string;
+  startIcon?: ReactElement;
+  onClick?: () => void;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 }
 
-const variantclass={
-    primary:"bg-[#5046e5] text-[#e3e1fb]",
-    secondary:"bg-[#e0e7ff] text-[#e0e7ff]"
-}
-const defaultStyle="px-4 py-2 flex items-center rounded-md font-bold cursor-pointer"
-function Button(props:Button) {
+const variantClasses = {
+  primary: "bg-indigo-600 text-white hover:bg-indigo-700",
+  secondary: "bg-indigo-100 text-indigo-600 hover:bg-indigo-200",
+};
+
+const baseStyles =
+  "px-4 py-2 flex items-center justify-center rounded-md font-semibold transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed";
+
+function Button({
+  variant,
+  text,
+  startIcon,
+  onClick,
+  type = "button",
+  disabled = false,
+}: ButtonProps) {
   return (
-    <button className={variantclass[props.variant]+" "+defaultStyle}
-    onClick={props.onClick}
+    <button
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
+      className={`${variantClasses[variant]} ${baseStyles}`}
     >
-        <div className="pr-2">{props.startIcon}</div>
-        {props.text}
+      {startIcon && <span className="mr-2">{startIcon}</span>}
+      {text}
     </button>
-  )
+  );
 }
 
-export default Button
+export default Button;
