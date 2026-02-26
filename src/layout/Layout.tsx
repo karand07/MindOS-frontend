@@ -1,20 +1,14 @@
-import Sidebar from "../components/Sidebar"
+import Sidebar from "../components/Sidebar";
+import { Outlet } from "react-router-dom";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout() {
   return (
-    <html lang="en">
-      <body>
-        <Sidebar />
+    <div className="flex">
+      <Sidebar />
 
-        {/* Main content shifted to the right */}
-        <main className="ml-72 min-h-screen p-6">
-          {children}
-        </main>
-      </body>
-    </html>
-  )
+      <main className="ml-72 min-h-screen p-6 w-full">
+        <Outlet />   {/* 👈 child routes render here */}
+      </main>
+    </div>
+  );
 }
