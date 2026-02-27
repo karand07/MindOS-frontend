@@ -7,6 +7,7 @@ interface ButtonProps {
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
+  fullWidth?: boolean;
 }
 
 const variantClasses = {
@@ -15,7 +16,7 @@ const variantClasses = {
 };
 
 const baseStyles =
-  "px-4 py-2 flex items-center justify-center rounded-md font-semibold transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed";
+  "px-4  py-2 flex items-center justify-center rounded-md font-semibold transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed";
 
 function Button({
   variant,
@@ -24,13 +25,14 @@ function Button({
   onClick,
   type = "button",
   disabled = false,
+  fullWidth = false,
 }: ButtonProps) {
   return (
     <button
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`${variantClasses[variant]} ${baseStyles}`}
+      className={`${variantClasses[variant]} ${baseStyles} ${fullWidth? "w-full" : ""}`}
     >
       {startIcon && <span className="mr-2">{startIcon}</span>}
       {text}

@@ -1,5 +1,9 @@
+import  type { ComponentProps } from "react"
 import Button from "./Button"
 import Input from "./Input"
+import { NavLink} from "react-router-dom"
+
+
 
 interface Field {
   placeholder: string
@@ -11,12 +15,18 @@ interface AuthCardProps {
   title: string
   fields: Field[]
   buttonText: string
-  onSubmit: () => void
+  error?: string
+ onSubmit: ComponentProps<"form">["onSubmit"]
+ authText:string
+ redirect:string
 }
 
-function AuthCard({ title, fields, buttonText, onSubmit }: AuthCardProps) {
+function AuthCard({authText ,error ,title, fields, buttonText, onSubmit ,redirect}: AuthCardProps) {
   return (
-    <div className="bg-white border rounded-md max-w-72 p-6 space-y-4">
+    <form
+      onSubmit={onSubmit}
+      className="bg-white border rounded-md max-w-72 p-6 space-y-4"
+    >
       <h2 className="text-xl font-semibold text-center">{title}</h2>
 
       {fields.map((field, index) => (
@@ -27,9 +37,17 @@ function AuthCard({ title, fields, buttonText, onSubmit }: AuthCardProps) {
           type={field.type ?? "text"}
         />
       ))}
+      {/* ⭐ ERROR MESSAGE UI */}
+      {error && (
+        <p className="text-red-500 text-sm text-center">
+          {error}
+        </p>
+      )}
 
-      <Button text={buttonText} variant="primary" onClick={onSubmit} />
-    </div>
+      {/* type="submit" is IMPORTANT */}
+      <Button text={buttonText} variant="primary" type="submit" fullWidth={true} />
+      <NavLink to={redirect} ><span>{authText}</span></NavLink>
+    </form>
   )
 }
 
