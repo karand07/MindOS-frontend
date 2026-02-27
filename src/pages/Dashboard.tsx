@@ -1,8 +1,3 @@
-
-
-
-
-
 function Dashboard() {
    
   return (
@@ -10,8 +5,6 @@ function Dashboard() {
     <div className="text-center">
       <h1>Dashboard / default Page</h1>
     </div>
-    
-    
     </>
   )
 }

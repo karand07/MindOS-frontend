@@ -25,7 +25,7 @@
                 password
               })
               if(res.data.token){
-                localStorage.setItem("UserToken",res.data.token);
+                localStorage.setItem("token",res.data.token);
                 alert("Login Successful!")
                 navigate("/dashboard")
               }else{
