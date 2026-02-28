@@ -8,7 +8,7 @@ import { Brain } from "lucide-react";
 function Sidebar() {
   return (
     <div className="fixed left-0 top-0 h-screen w-72 bg-gray-300 p-3">
-     <NavLink to={"/"} className="flex items-center justify-center gap-2">
+     <NavLink to={"/dashboard"} className="flex items-center justify-center gap-2">
   <Brain className="w-7 h-7 text-indigo-600" />
   <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
     Mind<span className="text-indigo-600">Os</span>

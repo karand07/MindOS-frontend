@@ -7,6 +7,7 @@ interface CreateContentModalProps {
   open: boolean
   onClose: () => void
   onSubmit: (data: { link: string; title: string; type: string; tags: string[] }) => void
+  refershContent?: () => void
 }
 
 function CreateContentModal({ open, onClose, onSubmit }: CreateContentModalProps) {
