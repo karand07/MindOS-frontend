@@ -1,14 +1,14 @@
 import Card from "../components/Card"
 import { useContent } from "../hooks/useContent"
 
-function YoutubePage() {
-  const { content, loading } = useContent("youtube")
+function TwitterPage() {
+  const { content, loading } = useContent("twitter")
 
   if (loading) return <div className="p-6">Loading...</div>
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">YouTube Content</h1>
+      <h1 className="text-2xl font-bold mb-4">Twitter Content</h1>
 
       <div className="flex gap-4 flex-wrap">
         {content.map((item) => (
@@ -24,4 +24,4 @@ function YoutubePage() {
   )
 }
 
-export default YoutubePage
+export default TwitterPage

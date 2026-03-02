@@ -68,7 +68,7 @@ function CreateContentModal({ open, onClose, onSubmit }: CreateContentModalProps
             className="border rounded-md p-2 w-full"
           >
             <option value="YOUTUBE">YouTube</option>
-            <option value="TWEET">Tweet</option>
+            <option value="twitter">twitter</option>
             <option value="BLOG">Blog</option>
             <option value="ARTICLE">Article</option>
             <option value="PHOTO">Photo</option>

@@ -6,7 +6,7 @@ import SignupPage from './pages/auth/SignupPage'
 import SigninPage from './pages/auth/SigninPage'
 import DocPage from './pages/DocPage'
 import PhotosPage from './pages/PhotosPage'
-import TweeterPage from './pages/TweeterPage'
+import TweeterPage from './pages/TwitterPage'
 import YoutubePage from './pages/YoutubePage'
 function App() {
   return (
