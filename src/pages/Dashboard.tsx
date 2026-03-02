@@ -1,47 +1,10 @@
-import { useEffect, useState } from "react"
 import Card from "../components/Card"
-import { GetContentData } from "../api/ContentData"
-import { useOutletContext } from "react-router-dom"
-
-interface OutletContextType {
-  refreshTrigger: number
-}
-
-
-
-interface ContentItem {
-  _id: string
-  title: string
-  type: "youtube" | "twitter"
-  link: string
-  tags: string[]
-}
+import { useContent } from "../hooks/useContent"
 
 function Dashboard() {
-  const [content, setContent] = useState<ContentItem[]>([])
-const refreshTrigger = useOutletContext<OutletContextType>().refreshTrigger
-  useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const res = await GetContentData()
-      console.log("Fetched content data:", res)
+  const { content, loading } = useContent()
 
-      const cleanedData = res.contents.map((item: any) => ({
-        _id: item._id,
-        title: item.title,
-        link: item.link,
-        type: item.type.toLowerCase()  // ⭐ convert YOUTUBE → youtube
-      }))
-
-      setContent(cleanedData)
-
-    } catch (err) {
-      console.error("Error fetching content", err)
-    }
-  }
-
-  fetchData()
-}, [refreshTrigger])
+  if (loading) return <div className="p-6">Loading...</div>
 
   return (
     <div className="p-6 flex gap-4 flex-wrap">

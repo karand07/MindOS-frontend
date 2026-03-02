@@ -5,7 +5,7 @@ import Bookmark from "../icon/Bookmark";
 import Delete from "../icon/Delete";
 
 interface CardProps {
-  type:"youtube"|"twitter",
+  type:"youtube"|"twitter"|"blog"|"article"|"photo",
   title:string,
   link:string
 }
