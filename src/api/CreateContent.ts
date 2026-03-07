@@ -1,10 +1,10 @@
 import axios from "axios";
 import { BACKEND_URL } from "../Config";
-
+import { type ContentType } from "../components/EditContentModal";
 interface content{
     title:string,
     url:string,
-    type: string
+    type: ContentType, // "TWEET"|"BLOG"|"ARTICLE"|"PHOTO"|"YOUTUBE"
     tags: string[]
 }
 

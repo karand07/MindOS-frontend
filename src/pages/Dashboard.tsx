@@ -10,6 +10,7 @@ function Dashboard() {
     <div className="p-6 flex gap-4 flex-wrap">
       {content.map((item) => (
         <Card
+        _id={item._id}
           key={item._id}
           title={item.title}
           type={item.type}

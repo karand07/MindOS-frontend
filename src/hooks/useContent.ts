@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { GetContentData } from "../api/ContentData"
+import type { ContentType } from "../components/EditContentModal"
 
 export interface ContentItem {
   _id: string
   title: string
-  type: "youtube" | "twitter" | "blog" | "article" | "photo"
+  type: ContentType
   link: string
 }
 
@@ -21,7 +22,7 @@ export const useContent = (type?: ContentItem["type"]) => {
           _id: item._id,
           title: item.title,
           link: item.link,
-          type: item.type.toLowerCase()
+          type: item.type
         }))
 
         // ⭐ If type provided → filter

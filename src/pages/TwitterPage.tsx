@@ -2,7 +2,7 @@ import Card from "../components/Card"
 import { useContent } from "../hooks/useContent"
 
 function TwitterPage() {
-  const { content, loading } = useContent("twitter")
+  const { content, loading } = useContent("TWEET")
 
   if (loading) return <div className="p-6">Loading...</div>
 
@@ -13,6 +13,7 @@ function TwitterPage() {
       <div className="flex gap-4 flex-wrap">
         {content.map((item) => (
           <Card
+              _id={item._id}
             key={item._id}
             title={item.title}
             type={item.type}

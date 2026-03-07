@@ -1,8 +1,7 @@
 import Card from "../components/Card"
 import { useContent } from "../hooks/useContent"
-
 function PhotoPage() {
-  const { content, loading } = useContent("photo")
+  const { content, loading } = useContent("PHOTO")
 
   if (loading) return <div className="p-6">Loading...</div>
 
@@ -15,8 +14,9 @@ function PhotoPage() {
           <Card
             key={item._id}
             title={item.title}
-            type={item.type}
+            type={item.type }
             link={item.link}
+            _id={item._id}
           />
         ))}
       </div>
