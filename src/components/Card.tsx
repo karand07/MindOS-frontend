@@ -7,6 +7,8 @@ import { useState } from "react";
 import EditContentModal from "./EditContentModal";
 import { useOutletContext} from "react-router-dom";
 import {type ContentType } from "./EditContentModal";
+import { DeleteContent } from "../api/DeleteContent";
+
 interface CardProps {
   type: ContentType;
   title:string,
@@ -19,6 +21,15 @@ interface OutletContextType {
 }
 
 function Card(props:CardProps) {
+  const handleDelete = async()=>{
+    try {
+      await DeleteContent(props._id)
+      refreshContent()
+    } catch (error) {
+      console.error("Delete failed", error)
+    }
+  }
+
   const [editContent,setEditContent]=useState(false)
   const {refreshContent} = useOutletContext<OutletContextType>()
   return (
@@ -37,11 +48,11 @@ function Card(props:CardProps) {
       <div className="flex justify-between">
         <div className="flex items-center">
           <div className="pr-2"><a href={props.link} target="_blank" rel="noopener noreferrer"><Bookmark/></a></div>
-          {props.title} Title 
+          {props.title} 
         </div>
         <div className="flex ml-2">
-          <div className="pr-2" onClick={()=>setEditContent(true)}><Edit/></div>
-          <div><Delete/></div>
+          <div className="pr-2 cursor-pointer" onClick={()=>setEditContent(true)}><Edit/></div>
+          <div className="cursor-pointer" onClick={handleDelete}><Delete/></div>
         </div>
       </div>
       {/* main content */}
