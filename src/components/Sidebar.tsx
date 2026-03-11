@@ -5,23 +5,30 @@ import Social from "../icon/Social"
 import Video from "../icon/Video"
 import SidebarItems from "./SidebarItems"
 import { Brain } from "lucide-react";
+import LogOut from "./LogOut"
 function Sidebar() {
   return (
-    <div className="fixed left-0 top-0 h-screen w-72 bg-gray-300 p-3">
+    <div className="fixed left-0 top-0 h-screen w-72 bg-gray-300 p-3 flex flex-col justify-between">
+      <div className="mt-5">
+        {/* Logo */}
      <NavLink to={"/dashboard"} className="flex items-center justify-center gap-2">
-  <Brain className="w-7 h-7 text-indigo-600" />
-  <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-    Mind<span className="text-indigo-600">Os</span>
-  </h1>
-</NavLink >
-      <div className="pt-9">
-        
+        <Brain className="w-7 h-7 text-indigo-600" />
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+          Mind<span className="text-indigo-600">Os</span>
+        </h1>
+      </NavLink >
+      {/* Sidebar items */}
+      <div className="pt-4">   
       <SidebarItems text="Youtube" icon={<Video/>} to="youtube"/>
       <SidebarItems text="Tweetter" icon={<Social/>} to="tweeter"/>
       <SidebarItems text="Photos" icon={<Photo/>} to="photos"/>
       <SidebarItems text="Documents" icon={<Docs/>} to="document" />
       </div>
-      
+
+      </div>
+      <div className="mb-9">
+        <LogOut/> 
+      </div>
     </div>
   )
 }
