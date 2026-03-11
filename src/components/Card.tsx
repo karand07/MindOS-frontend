@@ -43,7 +43,7 @@ function Card(props:CardProps) {
     refresh={refreshContent}
   />
 )}
-<div className="bg-white border shadow-mg max-w-72 max-h-1/3 p-4 overflow-auto">
+<div className="bg-white  shadow-xl max-w-72 max-h-1/3 p-4 overflow-auto rounded-md">
       {/* header of card */}
       <div className="flex justify-between">
         <div className="flex items-center">

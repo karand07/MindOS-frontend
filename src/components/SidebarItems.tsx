@@ -10,7 +10,7 @@ interface SidebarItems{
 function SidebarItems(props:SidebarItems) {
   return (
     <>
-    <NavLink  to={props.to} className="flex p-3 my-1 bg-white items-center  rounded-md shadow-lg border-sm">
+    <NavLink  to={props.to} className="flex p-3 my-2 bg-white items-center  rounded-md shadow-lg border-sm">
         <div className="px-2">{props.icon}</div>
         <div className="font-md">{props.text}</div>
     </NavLink>
