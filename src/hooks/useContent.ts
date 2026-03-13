@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { GetContentData } from "../api/ContentData"
 import type { ContentType } from "../components/EditContentModal"
+import { useOutletContext } from "react-router-dom"
 
 export interface ContentItem {
   _id: string
@@ -9,10 +10,14 @@ export interface ContentItem {
   link: string
 }
 
+interface OutletContextType {
+  refreshTrigger: number
+}
+
 export const useContent = (type?: ContentItem["type"]) => {
   const [content, setContent] = useState<ContentItem[]>([])
   const [loading, setLoading] = useState(true)
-
+  const { refreshTrigger } = useOutletContext<OutletContextType>()
   useEffect(() => {
     const fetchContent = async () => {
       try {
@@ -39,7 +44,7 @@ export const useContent = (type?: ContentItem["type"]) => {
     }
 
     fetchContent()
-  }, [type])
+  }, [type,refreshTrigger])
 
   return { content, loading }
 }

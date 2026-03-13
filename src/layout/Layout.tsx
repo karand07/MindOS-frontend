@@ -8,6 +8,10 @@ import { CreateContent } from "../api/CreateContent"
 export default function RootLayout() {
   const [modalOpen, setModalOpen] = useState(false)
   const [refreshTrigger, setRefreshTrigger] = useState(0)
+
+  const refreshContent = () => {
+    setRefreshTrigger(prev => prev + 1)
+  }
   return (
     <div className="flex">
       <Sidebar />
@@ -17,7 +21,7 @@ export default function RootLayout() {
         <Navbar onCreateClick={() => setModalOpen(true)} />
 
         <div className="p-4">
-          <Outlet context={{ refreshTrigger }}  />
+          <Outlet context={{ refreshContent ,refreshTrigger}}  />
         </div>
 
         {/* ⭐ GLOBAL MODAL lives here */}
@@ -27,7 +31,7 @@ export default function RootLayout() {
           onSubmit={async(data) => {
             try {
               await CreateContent({ ...data, url: data.link })
-              setRefreshTrigger(prev => prev + 1) 
+              refreshContent()
               setModalOpen(false)
             } catch (error) {
               alert(error)
