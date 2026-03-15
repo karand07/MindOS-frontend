@@ -8,30 +8,34 @@ import EditContentModal from "./EditContentModal";
 import { useOutletContext} from "react-router-dom";
 import {type ContentType } from "./EditContentModal";
 import { DeleteContent } from "../api/DeleteContent";
+import Article from "../social/Article";
+import Photo from "../social/Photo";
 
 interface CardProps {
   type: ContentType;
   title:string,
   link:string,
-  _id:string
+  _id:string,
+  readonly?: boolean
 }
 
 interface OutletContextType {
-  refreshContent: () => void;
+  refreshContent?: () => void;
 }
 
 function Card(props:CardProps) {
   const handleDelete = async()=>{
     try {
       await DeleteContent(props._id)
-      refreshContent()
+      refreshContent?.()
     } catch (error) {
       console.error("Delete failed", error)
     }
   }
 
   const [editContent,setEditContent]=useState(false)
-  const {refreshContent} = useOutletContext<OutletContextType>()
+  const outlet = useOutletContext<OutletContextType | null>()
+const refreshContent = outlet?.refreshContent
   return (
   <>  {editContent && (
   <EditContentModal
@@ -40,7 +44,7 @@ function Card(props:CardProps) {
     link={props.link}
     type={props.type}
     onClose={() => setEditContent(false)}
-    refresh={refreshContent}
+    refresh={refreshContent?? (() => {})}
   />
 )}
 <div className="bg-white  shadow-xl max-w-72 max-h-1/3 p-4 overflow-auto rounded-md">
@@ -50,15 +54,17 @@ function Card(props:CardProps) {
           <div className="pr-2"><a href={props.link} target="_blank" rel="noopener noreferrer"><Bookmark/></a></div>
           {props.title} 
         </div>
-        <div className="flex ml-2">
+        {!props.readonly && (<div className="flex ml-2">
           <div className="pr-2 cursor-pointer" onClick={()=>setEditContent(true)}><Edit/></div>
           <div className="cursor-pointer" onClick={handleDelete}><Delete/></div>
-        </div>
+        </div>)}
       </div>
       {/* main content */}
       <div >
         {props.type ==='YOUTUBE'&& <Youtube link={props.link}/>}
         {props.type ==='TWEET' &&<Twitter link={props.link}/>}
+        {(props.type ==='ARTICLE'|| props.type ==='BLOG') && <Article link={props.link}/>}   
+        {props.type ==='PHOTO' && <Photo link={props.link}/>} 
       </div>
     </div>
 </>  

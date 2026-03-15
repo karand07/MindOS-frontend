@@ -4,9 +4,10 @@ import { Share } from "lucide-react"
 
 interface NavbarProps {
   onCreateClick: () => void
+  onShareClick: () => void
 }
 
-function Navbar({ onCreateClick }: NavbarProps) {
+function Navbar({ onCreateClick, onShareClick }: NavbarProps) {
   return (
     <div className="p-2 flex justify-end items-center">
       <Button
@@ -21,6 +22,7 @@ function Navbar({ onCreateClick }: NavbarProps) {
           text="Share Brain"
           startIcon={<Share />}
           variant="secondary"
+          onClick={onShareClick}
         />
       </div>
     </div>

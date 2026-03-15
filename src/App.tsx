@@ -7,11 +7,17 @@ import SigninPage from './pages/auth/SigninPage'
 import DocPage from './pages/DocPage'
 import PhotosPage from './pages/PhotosPage'
 import TweeterPage from './pages/TwitterPage'
+
 import YoutubePage from './pages/YoutubePage'
+import ShareBrainPage from './pages/ShareBrainPage'
+
 function App() {
   return (
     <>
     <Routes>
+      
+
+<Route path="/share/:hash" element={<ShareBrainPage />} />
       <Route path='/signup' element={<SignupPage/>} />
       <Route path='/' element={<SigninPage/>} />
       <Route  element={<RootLayout/>}>
