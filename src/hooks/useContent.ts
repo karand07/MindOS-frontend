@@ -8,6 +8,7 @@ export interface ContentItem {
   title: string
   type: ContentType
   link: string
+  tags?:string[]
 }
 
 interface OutletContextType {
@@ -27,7 +28,8 @@ export const useContent = (type?: ContentItem["type"]) => {
           _id: item._id,
           title: item.title,
           link: item.link,
-          type: item.type
+          type: item.type,
+          tags:item.tags
         }))
 
         // ⭐ If type provided → filter

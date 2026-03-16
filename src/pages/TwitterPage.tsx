@@ -18,6 +18,7 @@ function TwitterPage() {
             title={item.title}
             type={item.type}
             link={item.link}
+            tags={item.tags}
           />
         ))}
       </div>

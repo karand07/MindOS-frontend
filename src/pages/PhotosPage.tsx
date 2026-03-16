@@ -17,6 +17,7 @@ function PhotoPage() {
             type={item.type }
             link={item.link}
             _id={item._id}
+            tags={item.tags}
           />
         ))}
       </div>

@@ -37,6 +37,7 @@ function Dashboard() {
             title={item.title}
             type={item.type}
             link={item.link}
+            tags={item.tags}
           />
         ))}
       </div>

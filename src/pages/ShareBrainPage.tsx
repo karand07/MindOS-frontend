@@ -10,6 +10,7 @@ interface ContentItem {
   title: string
   link: string
   type: ContentType
+  tags?: string[]
 }
 
 function ShareBrainPage() {
@@ -66,6 +67,7 @@ function ShareBrainPage() {
               title={item.title}
               link={item.link}
               type={item.type}
+              tags={item.tags}
               readonly
             />
 

@@ -14,7 +14,13 @@ function CreateContentModal({ open, onClose, onSubmit }: CreateContentModalProps
   const [link, setLink] = useState("")
   const [title, setTitle] = useState("")
   const [type, setType] = useState("YOUTUBE")
+  const [tags, setTags] = useState("")
   // Close on ESC press
+  const tagArray = tags
+  .split(",")
+  .map((tag) => tag.trim())
+  .filter(Boolean)
+
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose()
@@ -25,9 +31,10 @@ function CreateContentModal({ open, onClose, onSubmit }: CreateContentModalProps
 
   const handleSubmit: ComponentProps<"form">["onSubmit"] = (e) => {
     e.preventDefault()
-    onSubmit({ link, title ,type ,tags:[]})
+    onSubmit({ link, title ,type ,tags: tagArray})
     setLink("")
     setTitle("")
+    setTags("")
     onClose()
   }
 
@@ -68,11 +75,16 @@ function CreateContentModal({ open, onClose, onSubmit }: CreateContentModalProps
             className="border rounded-md p-2 w-full"
           >
             <option value="YOUTUBE">YouTube</option>
-            <option value="twitter">twitter</option>
+            <option value="TWEET">twitter</option>
             <option value="BLOG">Blog</option>
             <option value="ARTICLE">Article</option>
             <option value="PHOTO">Photo</option>
           </select>
+
+          <Input
+           placeholder="Enter tags (comma separated)"
+           onChange={(v) => setTags(v)}
+           />
         {/* Submit */}
         <Button
           text="Submit"

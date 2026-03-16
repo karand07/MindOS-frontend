@@ -18,6 +18,7 @@ const { content, loading } = useContent("ARTICLE")
             title={item.title}
               type={item.type }
             link={item.link}
+            tags={item.tags}
           />
         ))}
       </div>

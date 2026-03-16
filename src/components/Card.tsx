@@ -17,6 +17,7 @@ interface CardProps {
   link:string,
   _id:string,
   readonly?: boolean
+  tags?:string[]
 }
 
 interface OutletContextType {
@@ -49,7 +50,7 @@ const refreshContent = outlet?.refreshContent
 )}
 <div className="bg-white  shadow-xl max-w-72 max-h-1/3 p-4 overflow-auto rounded-md">
       {/* header of card */}
-      <div className="flex justify-between">
+      <div className="flex justify-between pb-2">
         <div className="flex items-center">
           <div className="pr-2"><a href={props.link} target="_blank" rel="noopener noreferrer"><Bookmark/></a></div>
           {props.title} 
@@ -59,6 +60,7 @@ const refreshContent = outlet?.refreshContent
           <div className="cursor-pointer" onClick={handleDelete}><Delete/></div>
         </div>)}
       </div>
+      
       {/* main content */}
       <div >
         {props.type ==='YOUTUBE'&& <Youtube link={props.link}/>}
@@ -66,6 +68,19 @@ const refreshContent = outlet?.refreshContent
         {(props.type ==='ARTICLE'|| props.type ==='BLOG') && <Article link={props.link}/>}   
         {props.type ==='PHOTO' && <Photo link={props.link}/>} 
       </div>
+
+      {props.tags && props.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-2">
+              {props.tags.map((tag, index) => (
+                <span
+                  key={index}
+                  className="text-xs bg-gray-200 px-2 py-1 rounded-md"
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+         )}
     </div>
 </>  
   )
