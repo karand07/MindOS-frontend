@@ -11,13 +11,13 @@ import TweeterPage from './pages/TwitterPage'
 import YoutubePage from './pages/YoutubePage'
 import ShareBrainPage from './pages/ShareBrainPage'
 
+
 function App() {
+    
   return (
     <>
     <Routes>
-      
-
-<Route path="/share/:hash" element={<ShareBrainPage />} />
+     <Route path="/share/:hash" element={<ShareBrainPage />} />
       <Route path='/signup' element={<SignupPage/>} />
       <Route path='/' element={<SigninPage/>} />
       <Route  element={<RootLayout/>}>
