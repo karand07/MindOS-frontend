@@ -24,7 +24,7 @@ function ShareBrainModal({ onClose }: Props) {
 
         console.log("API response:", res)
 
-        const generatedLink = `http://localhost:5173/share/${res.url}`
+        const generatedLink = `https://mindos-chi.vercel.app/share/${res.url}`
 
         setLink(generatedLink)
 
