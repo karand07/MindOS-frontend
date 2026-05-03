@@ -1,73 +1,85 @@
-# React + TypeScript + Vite
+# MindOS Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+MindOS is a "Second Brain" application that helps you store, organize, and retrieve your digital content in one centralized place. Save your favorite documents, photos, tweets, and YouTube videos, and easily share your collections with others.
 
-Currently, two official plugins are available:
+This repository contains the frontend implementation for MindOS, built with modern web technologies to ensure a fast, responsive, and intuitive user experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- 🧠 **Second Brain:** A centralized dashboard to view and search all your saved digital content.
+- 🔐 **Authentication:** Secure user signup and signin flows.
+- 🗂️ **Content Organization:** Dedicated pages to view and manage specific content types:
+  - Documents
+  - Photos
+  - Tweets
+  - YouTube Videos
+- 🔗 **Shareable Brain:** Generate a unique link (`/share/:hash`) to share your curated digital collection with others.
+- 🔍 **Search:** Instantly filter and find your saved content on the dashboard.
+- ✏️ **Content Management:** Modals to effortlessly create, edit, and delete items.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+The frontend is built utilizing the following core technologies:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Framework:** [React 19](https://react.dev/)
+- **Routing:** [React Router DOM](https://reactrouter.com/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Build Tool:** [Vite](https://vitejs.dev/)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **HTTP Client:** [Axios](https://axios-http.com/)
+- **Icons:** [Lucide React](https://lucide.dev/)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Project Structure
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── api/            # API integration and configuration
+├── auth/           # Authentication related components/views
+├── components/     # Reusable UI components (Cards, Modals, Buttons, etc.)
+├── hooks/          # Custom React hooks (e.g., useContent)
+├── icon/           # Icon assets or custom icon components
+├── layout/         # Application layout structures (Sidebar, Navbar)
+├── pages/          # Main application pages (Dashboard, ShareBrainPage, etc.)
+└── social/         # Social integration utilities
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Follow these instructions to set up the project locally.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Prerequisites
+
+Ensure you have [Node.js](https://nodejs.org/) installed on your machine.
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd MindOS-frontend
+   ```
+
+2. **Install dependencies:**
+   Using npm:
+   ```bash
+   npm install
+   ```
+
+3. **Environment Variables:**
+   Create a `.env` file in the root directory and add the necessary environment variables. (e.g., your backend API URL).
+   ```env
+   VITE_API_URL=http://localhost:3000/api/v1
+   ```
+
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+   The application will be available at `http://localhost:5173`.
+
+## Scripts
+
+- `npm run dev`: Starts the development server using Vite.
+- `npm run build`: Compiles TypeScript and builds the application for production.
+- `npm run lint`: Runs ESLint to analyze the code for potential errors.
+- `npm run preview`: Previews the built production application locally.
